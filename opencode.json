@@ -13,7 +13,10 @@
     "reui": {
       "type": "remote",
       "url": "https://mcp.reui.io/api/mcp",
-      "enabled": true
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer reui_pat_lFyaXdnFRXITnWfGeLpGiMHJDjotfzquONthdmeS78w"
+      }
     }
   }
 }
