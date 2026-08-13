@@ -1,8 +1,8 @@
 import { Suspense } from "react"
 
-import { Badge } from "@/components/reui/badge"
-import { Frame, FramePanel } from "@/components/reui/frame"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { MemberGrid } from "@/components/member-grid"
 import { stats } from "@/lib/data"
 
@@ -25,14 +25,14 @@ export default function MemberPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {stats.slice(0, 3).map((stat) => (
-              <Frame key={stat.label} className="text-center">
-                <FramePanel fit className="min-w-28">
+              <Card key={stat.label} className="text-center">
+                <CardContent className="min-w-28">
                   <p className="text-xl font-semibold">{stat.value}</p>
                   <p className="text-muted-foreground text-xs">
                     {stat.label}
                   </p>
-                </FramePanel>
-              </Frame>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

@@ -5,14 +5,14 @@ import {
   Flower,
   MoonStar,
   Sparkles,
+  Star,
   Users,
 } from "lucide-react"
 
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/reui/badge"
-import { Frame, FramePanel } from "@/components/reui/frame"
-import { IconTile } from "@/components/reui/icon-tile"
-import { Rating } from "@/components/reui/rating"
+import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 import { programs, stats, testimonials, association } from "@/lib/data"
 
 const practices = [
@@ -72,12 +72,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <Frame variant="inverse" spacing="lg" className="h-fit">
-            <FramePanel className="space-y-4">
+          <Card className="h-fit bg-background">
+            <CardContent className="space-y-4">
               <div className="flex items-center gap-3">
-                <IconTile variant="elevated" size="lg">
+                <span className="bg-muted text-accent-foreground flex size-12 shrink-0 items-center justify-center rounded-2xl border-2 border-background shadow-[0_1px_3px_0_rgb(0_0_0/0.14)] dark:border">
                   <Users className="size-5" aria-hidden />
-                </IconTile>
+                </span>
                 <div>
                   <p className="text-2xl font-semibold">{stats[0].value}</p>
                   <p className="text-muted-foreground text-sm">
@@ -85,20 +85,20 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              <div className="bg-muted/60 flex items-center justify-between rounded-lg border py-3 pl-4 pr-3">
+              <div className="border-border bg-muted/60 flex items-center justify-between rounded-lg border py-3 pl-4 pr-3">
                 <Badge variant="success-light">50+ years</Badge>
                 <span className="text-muted-foreground text-sm">
                   eternal tradition
                 </span>
               </div>
-              <div className="bg-muted/60 flex items-center justify-between rounded-lg border py-3 pl-4 pr-3">
+              <div className="border-border bg-muted/60 flex items-center justify-between rounded-lg border py-3 pl-4 pr-3">
                 <Badge variant="info-light">180</Badge>
                 <span className="text-muted-foreground text-sm">
                   certified teachers
                 </span>
               </div>
-            </FramePanel>
-          </Frame>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -128,19 +128,19 @@ export default function HomePage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {practices.map((practice) => (
-            <Frame key={practice.title}>
-              <FramePanel>
-                <IconTile variant="soft" size="sm">
+            <Card key={practice.title}>
+              <CardContent>
+                <span className="bg-primary/10 text-primary flex size-8 shrink-0 items-center justify-center rounded-xl">
                   <practice.icon className="size-4" aria-hidden />
-                </IconTile>
+                </span>
                 <div className="mt-4">
                   <h3 className="font-medium">{practice.title}</h3>
                   <p className="text-muted-foreground mt-1.5 text-sm">
                     {practice.description}
                   </p>
                 </div>
-              </FramePanel>
-            </Frame>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>
@@ -162,8 +162,8 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {programs.map((program) => (
-              <Frame key={program.title}>
-                <FramePanel>
+              <Card key={program.title}>
+                <CardContent>
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <h3 className="font-medium">{program.title}</h3>
@@ -177,8 +177,8 @@ export default function HomePage() {
                     <span>{program.duration}</span>
                     <span>{program.level}</span>
                   </div>
-                </FramePanel>
-              </Frame>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -194,9 +194,22 @@ export default function HomePage() {
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Frame key={testimonial.name}>
-              <FramePanel className="flex flex-col gap-4">
-                <Rating rating={testimonial.rating} size="sm" />
+            <Card key={testimonial.name}>
+              <CardContent className="flex h-full flex-col gap-4">
+                <div className="flex items-center gap-2" aria-label={`${testimonial.rating} out of 5 stars`}>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <Star
+                      key={index}
+                      className={cn(
+                        "size-4",
+                        index < testimonial.rating
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-muted-foreground/30"
+                      )}
+                      aria-hidden
+                    />
+                  ))}
+                </div>
                 <p className="text-sm leading-relaxed">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
@@ -206,8 +219,8 @@ export default function HomePage() {
                     {testimonial.location}
                   </p>
                 </div>
-              </FramePanel>
-            </Frame>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </section>

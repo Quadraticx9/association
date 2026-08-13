@@ -1,6 +1,5 @@
-import { Frame, FramePanel } from "@/components/reui/frame"
-import { Badge } from "@/components/reui/badge"
-import { IconTile } from "@/components/reui/icon-tile"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -66,19 +65,19 @@ export default function AboutPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => (
-              <Frame key={value.title}>
-                <FramePanel>
-                  <IconTile variant="soft" size="sm">
+              <Card key={value.title}>
+                <CardContent>
+                  <span className="bg-primary/10 text-primary flex size-8 shrink-0 items-center justify-center rounded-xl">
                     <value.icon className="size-4" aria-hidden />
-                  </IconTile>
+                  </span>
                   <div className="mt-4">
                     <h3 className="text-sm font-medium">{value.title}</h3>
                     <p className="text-muted-foreground mt-1.5 text-sm">
                       {value.description}
                     </p>
                   </div>
-                </FramePanel>
-              </Frame>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
