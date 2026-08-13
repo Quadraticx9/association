@@ -132,7 +132,7 @@ export default function AboutPage() {
             Become part of a community that has trained teachers &amp; seekers
             from over thirty countries.
           </p>
-          <Button size="lg" className="mt-6" render={<Link href="/member" />}>
+          <Button size="lg" className="mt-6" render={<Link href="/member" />} nativeButton={false}>
               Meet the Members <ArrowRight className="size-4" aria-hidden />
             </Button>
         </div>

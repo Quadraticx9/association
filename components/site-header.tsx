@@ -53,7 +53,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <Button size="sm" render={<Link href="/member" />}>
+        <Button size="sm" render={<Link href="/member" />} nativeButton={false}>
           Join Us
         </Button>
       </div>

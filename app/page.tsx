@@ -62,11 +62,11 @@ export default function HomePage() {
               the Ganga since 1972.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button size="lg" render={<Link href="/member" />}>
+              <Button size="lg" render={<Link href="/member" />} nativeButton={false}>
                 Meet the Members{' '}
                 <ArrowRight className="size-4" aria-hidden />
               </Button>
-              <Button variant="outline" size="lg" render={<Link href="/about" />}>
+              <Button variant="outline" size="lg" render={<Link href="/about" />} nativeButton={false}>
                 Our Story
               </Button>
             </div>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 Retreats, trainings &amp; workshops
               </h2>
             </div>
-            <Button variant="ghost" render={<Link href="/member" />}>
+            <Button variant="ghost" render={<Link href="/member" />} nativeButton={false}>
                 View members <ArrowRight className="size-4" aria-hidden />
               </Button>
           </div>
